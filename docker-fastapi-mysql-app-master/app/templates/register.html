@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="content">
+        <form action="/register" method="post">
+            <div>
+                <label for="username">ユーザ名</label>
+                <input id="username" type="text" name="username"/>
+            </div>
+            <div>
+                <label for="password">パスワード</label>
+                <input id="password" type="password" name="password"/>
+            </div>
+            <div>
+                <label for="password-verify">パスワード(確認)</label>
+                <input id="password-verify" type="password"/>
+            </div>
+            <div>
+                <p>
+                    <select name="family_id"  >
+                    <option value="">家族名を選択してください</option>
+                    {% for family in families %}
+                    <option value="{{ family['id'] }}"> {{ family["family_name"] }} {{family['id']}}</option>
+                    {% endfor %}
+                    </select>
+                    
+                </p>
+            </div>
+            <div>
+                <label for="new_family_name">家族名</label>
+                <input id="new_family_name" type="text" name="new_family_name"/>
+            </div>
+
+                       
+          
+
+            <div>
+                <button type="submit">送信</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

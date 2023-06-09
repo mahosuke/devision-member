@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="content">
+        <h3>ストック一覧</h3>
+        <ul>
+            {% for stock in stocks %}
+                <li>
+                  <form action="{{ url_for("update_stock") }}" method="post">  
+                <input  name="stock_name" style="display:none" value={{ stock['stock_name'] }}>
+                <input   name="category_id" style="display:none" value={{ category_id }}>
+                <input value={{ stock["stock_count"] }} type="number" id="tentacles" name="stock_count"
+       min="0" >
+                <p>{{ stock["stock_name"] }}:   {{ stock["stock_count"] }}</p>
+                 <button type="submit">更新</button>
+                </form>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if not stocks %}
+            <p>ありません</p>
+        {% endif %}
+
+        <li>
+            <a href="/stock_create/{{category_id}}">新たに品目を作成</a>
+        </li>
+    
+       
+    </div>
+{% endblock %}

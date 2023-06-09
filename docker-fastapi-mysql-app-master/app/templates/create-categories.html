@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="content">
+        <form action="{{ url_for("post_category") }}" method="post">
+            <div>
+                <label for="title">カテゴリのタイトル</label>
+                <input id="new_category_name" type="text" name="new_category_name"/>
+            </div>
+            
+            <div>
+                <button type="submit">作成</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

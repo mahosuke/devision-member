@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="content">
+        <form action="{{ url_for("post_stock") }}" method="post">
+            <div>
+                <label for="title">ストックの名前</label>
+                <input id="new_stock_name" type="text" name="new_stock_name"/>
+                <input  name="category_id" style="display:none" value={{category_id}}>
+               
+            </div>
+            
+            <div>
+                <button type="submit">作成</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

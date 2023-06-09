@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="member">
+        <h3>メンバー一覧</h3>
+        <ul>
+            {% for member in members %}
+                <li>
+                  <form action="{{ url_for("all-members") }}" method="post">  
+                <input  name="name" style="display:none" value={{ stock['name'] }}>
+                <input   name="id" style="display:none" value={{ id }}>
+                <input value={{ ["name"] }} type="teext" id="tentacles" name="name" min="0" >
+                <p>{{ students["id"] }}:   {{ students["name"] }}</p>
+                 <button type="submit">更新</button>
+                </form>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if not members %}
+            <p>ありません</p>
+        {% endif %}
+
+        <!-- <li>
+            <a href="/stock_create/{{category_id}}">新たに品目を作成</a>
+        </li> -->
+    
+       
+    </div>
+{% endblock %}

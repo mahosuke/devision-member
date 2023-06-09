@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="content">
+        <h3>ストック一覧</h3>
+        <ul>
+            {% for category,stocks in category_stocks.items()%}
+            <p>{{ category }}</p>
+            <ul id="stock_list">
+            {% for stock in stocks%}
+                <li class="black">
+                <p>{{ stock["stock_name"] }}:   <span class="num">{{ stock["stock_count"] }}</span></p>
+                <a href="https://www.amazon.co.jp/s?k={{stock["stock_name"]}}" target="_blank" rel="noopener noreferrer">amazon</a>
+                </li>
+            {% endfor %}
+            </ul>
+            {% endfor %}
+        </ul>
+        {% if not category_stocks %}
+            <p>ありません</p>
+        {% endif %}
+       
+    </div>
+    <script >
+
+        const stocks  =  Array.from(document.getElementsByClassName("num"))
+        const list_items = Array.from(document.getElementsByClassName("black"))
+        const stock_list =  document.getElementById("stock_list")
+        const newHTML = stocks.map(
+            (elem,i) => {
+                if (elem.innerText == 0){
+                    list_items[i].classList.remove("black")
+                    list_items[i].classList.add("red")
+                    list_items[i].style.color = "red"
+                    list_items[i].style.backgroundColor = "yellow"
+                }
+            }
+        )
+        
+    </script>
+{% endblock %}

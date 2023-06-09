@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="content">
+        <h3>カテゴリ一覧</h3>
+        {% if not categories %}
+            <p>まだカテゴリが登録されていません</p>
+        {% endif %}
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ url_for("category_detail_page", category_id=category["id"]) }}">{{ category["category_name"] }} </a>
+                </li>
+
+            {% endfor %}
+
+            <li>
+                <a href="{{ url_for('create_category_page') }}">カテゴリ作成</a>
+            </li>
+        </ul>
+        
+    </div>
+{% endblock %}
